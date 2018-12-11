@@ -1,0 +1,388 @@
+body {
+  margin: 0;
+}
+
+body, button, input {
+  font-family: $text__font-family--sans;
+  font-weight: $text__font-weight;
+  font-size: $text__font-size;
+} 
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.button {
+  background-color: $color__orange--dark;
+  color: #fff;
+  border: 2px solid $color__orange--dark;
+  transition: $transition;
+  
+  $c: &;
+  
+  &:hover {
+    background: none;
+    color: $color__orange--dark;
+  }
+
+
+  &__icon {
+    font-size: 17px;
+    vertical-align: middle;
+    margin-right: 10px;
+    transition: $transition;
+  }
+
+  &--round {
+    padding: 12px 18px;
+    border-radius: 100px;
+  }
+
+  &--white {
+    background: none;
+    padding: 10px 16px;
+    border: 2px solid #0005;
+    color: #0005;
+    transition: $transition;
+
+    &.active {
+      background-color: $color__orange;
+      color: #fff;
+      border: 2px solid $color__orange;
+
+      &:hover {
+        background-color: $color__orange;
+        color: #fff;
+        border: 2px solid $color__orange;
+        
+        #{$c}__icon {
+          color: $color__orange--dark;
+        }
+      }
+    }
+
+    &:hover {
+      border: 2px solid #0008;
+      color: #0008;
+      
+      #{$c}__icon {
+        color: $color__orange;
+      }
+    }
+  } 
+}
+
+h1 {
+  font-size: $text__font-size--h1;
+  font-weight: $text__font-weight--black;
+  margin: 0;
+}
+
+.dropdown {
+  padding: 0;
+
+  &::after {
+    content: "keyboard_arrow_down";
+    font-family: "Material Icons";
+    font-size: 18px;
+    vertical-align: middle;
+    margin-left: 2px;
+    opacity: .5;
+  }
+}
+
+.avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 200px;
+
+  &--main-header {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+.main-header {
+  height: 82px;
+  display: grid;
+  grid-template-columns: auto auto 1fr auto auto;
+  grid-gap: 2px;
+  background-color: #fff;
+
+  > div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 1px 0 #0002;
+  }
+
+  &__logo {
+    width: 225px;
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+
+    img {
+      width: 165px;
+    }
+  }
+
+  &__categories {
+    position: relative;
+
+    button {
+      padding: 0 30px;
+      height: 100%;
+    }
+  }
+
+  &__search {
+    padding: 0 30px;
+
+    &__icon {
+      margin-right: 5px;
+      font-size: 21px;
+    }
+
+    &__input {
+      height: 80px;
+      width: 100%;
+      border: none;
+      background: none;
+    }
+  }
+
+  &__author-space {
+    position: relative;
+
+    button {
+      padding: 0 30px;
+      height: 100%;
+    }
+  }
+
+  &__profile {
+    padding: 0 30px;
+    position: relative;
+    
+    &__basic-info {
+      text-align: left;
+      margin-left: 10px;
+      padding: 0;
+
+      &__name {
+        margin: 0;
+      } 
+
+      &__wibs {
+        margin: 0;
+        font-size: $text__font-size--small;
+        font-weight: $text__font-weight--bold;
+        color: $color__orange--dark;
+      }
+    }
+  }
+}
+
+.page {
+  &__header {
+    background-color: #eee;
+    
+    &__container {
+      max-width: 990px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 165px;
+      box-sizing: initial;
+      padding-bottom: 10px;
+    }
+  }
+
+  &__nav {
+    max-width: 990px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: stretch;
+    transform: translateY(-50%);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px 0 #0002;
+
+    &__item {
+      flex-basis: 50%;
+      height: 50px;
+      background-color: #fff;
+      transition: $transition;
+
+      &:hover {
+        background-color: #eee;
+      }
+
+      &--active {
+        background-color: $color__orange;        
+        color: #fff;
+
+        &:hover {
+          background-color: mix($color__orange, $color__orange--dark);
+        }
+      }
+    }
+  }
+
+  &__content {
+    max-width: 650px;
+    margin: 0 auto;
+
+    .button {
+      display: flex;
+      margin: 0 auto;
+    }
+  }
+}
+
+.exp-panel {
+  margin-bottom: 50px;
+
+  &__item {
+    &:not(:last-of-type) {
+      box-shadow: 0 1px #0002;
+    }
+
+    $e: &;      // garde en mémoire l'élément pour l'uiliser en tant que grand-parent (Sass ❤ BEM)
+
+    &__button {
+      padding: 0;
+      padding-right: 50px;
+      width: 100%;
+      position: relative;
+
+      &::after {
+        content: "keyboard_arrow_down";
+        font-family: "Material Icons";
+        font-size: 20px;
+        position: absolute;
+        right: 0;
+        top: 30px;
+        opacity: .5;
+      }
+
+      &:hover #{$e}__title {
+        text-decoration: underline;
+      }
+    }
+    
+    &__title {
+      text-align: left;
+      font-weight: $text__font-weight--bold;
+      font-size: $text__font-size--h2;
+      padding: 25px 0;
+      margin: 0;
+    }
+
+    &__body {
+      height: 0;
+      overflow: hidden;
+      transition: $transition;
+    }
+
+    &--active {
+      #{$e}__button::after {              // accès au grand-parent
+        content: "keyboard_arrow_up";
+      }
+      
+      #{$e}__title {
+        color: $color__orange;
+      }
+  
+      #{$e}__body {
+        font-family: $text__font-family--serif;
+        padding-bottom: 30px;
+        height: inherit;
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.popup {
+  top: 80%;
+  right: 0;
+  position: absolute;
+  display: none;
+  opacity: 0;
+  z-index: 99;
+  white-space: nowrap;
+  box-shadow: 0 0 30px 3px #0002;
+
+  > .container {
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #fff;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: 30px;
+    z-index: 90;
+    border-bottom: 10px solid #fff;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+  }
+  
+  &__link {
+    display: block;
+    line-height: 40px;
+    padding: 0 20px;
+    color: #000;
+    text-decoration: none;
+
+    &:hover {
+      background-color: #eee;
+    }
+  }
+
+  &__button {
+    line-height: 40px;
+    padding: 0 20px;
+    border: none;
+    text-transform: uppercase;
+    background-image: linear-gradient(90deg, $color__orange--dark, $color__orange);
+    transition: $transition;
+
+    i {
+      font-size: 20px;
+      vertical-align: -4px;
+      margin-right: 5px;
+    }
+
+    &:hover {
+      color: #fff9;
+      background-image: linear-gradient(90deg, $color__orange--dark, $color__orange);
+    }
+  }
+
+  &__spacer {
+    padding: 0 20px;
+    margin-bottom: 0;
+    color: #bbb;
+    text-transform: uppercase;
+    font-size: $text__font-size--small;
+  }
+  
+  &--active {
+    display: block;
+    opacity: 1;
+  }
+}
